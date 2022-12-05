@@ -48,10 +48,11 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highScore;
     }
   }
-  // When the guess is too High Number
-  else if (guess > secretNum) {
+  // When the player loses
+  else if (guess !== secretNum) {
     if (Attempts > 1) {
-      document.querySelector('.message').textContent = '📈 Too High ';
+      document.querySelector('.message').textContent =
+        guess > secretNum ? '📈 Too High ' : '📈 Too Low ';
       Attempts = Attempts - 1;
       document.querySelector('.Attempts').textContent = Attempts;
     } else {
@@ -61,17 +62,17 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   }
   // When the guess is too Low Number
-  else if (guess < secretNum) {
-    if (Attempts > 1) {
-      document.querySelector('.message').textContent = '📈 Too Low ';
-      Attempts = Attempts - 1;
-      document.querySelector('.Attempts').textContent = Attempts;
-    } else {
-      document.querySelector('.message').textContent =
-        'Your Game is Over ❌ 🚫';
-      document.querySelector('.Attempts').textContent = 0;
-    }
-  }
+  // else if (guess < secretNum) {
+  //   if (Attempts > 1) {
+  //     document.querySelector('.message').textContent = '📈 Too Low ';
+  //     Attempts = Attempts - 1;
+  //     document.querySelector('.Attempts').textContent = Attempts;
+  //   } else {
+  //     document.querySelector('.message').textContent =
+  //       'Your Game is Over ❌ 🚫';
+  //     document.querySelector('.Attempts').textContent = 0;
+  //   }
+  // }
 });
 
 //To reload the page, here we use the window.location.reload() method
@@ -82,6 +83,7 @@ document.querySelector('.check').addEventListener('click', function () {
 // if we reload the page, then it's not possible to work on the HighScore-- so we need to
 
 // To reset the game/ initial values
+
 document.querySelector('.again').addEventListener('click', function () {
   Attempts = 20;
   secretNum = Math.trunc(Math.random() * 20) + 1;
@@ -92,3 +94,5 @@ document.querySelector('.again').addEventListener('click', function () {
   document.querySelector('body').style.backgroundColor = '#222';
   document.querySelector('.number').style.width = '15rem';
 });
+
+// Refactoring the code for eleminating the duplications
