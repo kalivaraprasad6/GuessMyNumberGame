@@ -52,7 +52,7 @@ document.querySelector('.check').addEventListener('click', function () {
   else if (guess !== secretNum) {
     if (Attempts > 1) {
       document.querySelector('.message').textContent =
-        guess > secretNum ? '📈 Too High ' : '📈 Too Low ';
+        guess > secretNum ? '📈 Too High ' : '📉 Too Low ';
       Attempts = Attempts - 1;
       document.querySelector('.Attempts').textContent = Attempts;
     } else {
