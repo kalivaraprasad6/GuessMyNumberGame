@@ -18,10 +18,6 @@ console.log(document.querySelector('.guess').value);
 
 // document.querySelector('.check').addEventListener('click', saveInput);
 
-// or
-
-// Note : When ever we get something from user interface, it is a string
-
 let secretNum = Math.trunc(Math.random() * 20) + 1;
 let Attempts = 20;
 let highScore = 0;
@@ -59,13 +55,6 @@ document.querySelector('.check').addEventListener('click', function () {
     }
   }
 });
-
-//To reload the page, here we use the window.location.reload() method
-
-// document.querySelector('.again').addEventListener('click', function () {
-//   window.location.reload();
-// });
-// if we reload the page, then it's not possible to work on the HighScore-- so we need to
 
 // To reset the game/ initial values
 
