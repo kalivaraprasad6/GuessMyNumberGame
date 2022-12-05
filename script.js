@@ -48,7 +48,7 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.highscore').textContent = highScore;
     }
   }
-  // When the guess is too High
+  // When the guess is too High Number
   else if (guess > secretNum) {
     if (Attempts > 1) {
       document.querySelector('.message').textContent = '📈 Too High ';
@@ -60,7 +60,7 @@ document.querySelector('.check').addEventListener('click', function () {
       document.querySelector('.Attempts').textContent = 0;
     }
   }
-  // When the guess is too Low
+  // When the guess is too Low Number
   else if (guess < secretNum) {
     if (Attempts > 1) {
       document.querySelector('.message').textContent = '📈 Too Low ';
