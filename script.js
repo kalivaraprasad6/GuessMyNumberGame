@@ -26,23 +26,22 @@ let secretNum = Math.trunc(Math.random() * 20) + 1;
 let Attempts = 20;
 let highScore = 0;
 
+const displayMsg = function (message) {
+  document.querySelector('.message').textContent = message;
+};
+
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
 
-  console.log(guess, typeof guess);
-
   if (!guess) {
-    document.querySelector('.message').textContent = '❌ No Number provided';
+    displayMsg('❌ No Number provided');
   }
   // When the player wins
   else if (guess === secretNum) {
     document.querySelector('.number').textContent = secretNum;
-    document.querySelector('.message').textContent =
-      '✅ You guessed the Correct Number';
-
+    displayMsg('✅ You guessed the Correct Number');
     document.querySelector('body').style.backgroundColor = '#60b347';
     document.querySelector('.number').style.width = '30rem';
-
     if (Attempts > highScore) {
       highScore = Attempts;
       document.querySelector('.highscore').textContent = highScore;
@@ -51,28 +50,14 @@ document.querySelector('.check').addEventListener('click', function () {
   // When the player loses
   else if (guess !== secretNum) {
     if (Attempts > 1) {
-      document.querySelector('.message').textContent =
-        guess > secretNum ? '📈 Too High ' : '📉 Too Low ';
+      displayMsg(guess > secretNum ? '📈 Too High ' : '📉 Too Low ');
       Attempts = Attempts - 1;
       document.querySelector('.Attempts').textContent = Attempts;
     } else {
-      document.querySelector('.message').textContent =
-        'Your Game is Over ❌ 🚫 ';
+      displayMsg('Your Game is Over ❌ 🚫');
       document.querySelector('.Attempts').textContent = 0;
     }
   }
-  // When the guess is too Low Number
-  // else if (guess < secretNum) {
-  //   if (Attempts > 1) {
-  //     document.querySelector('.message').textContent = '📈 Too Low ';
-  //     Attempts = Attempts - 1;
-  //     document.querySelector('.Attempts').textContent = Attempts;
-  //   } else {
-  //     document.querySelector('.message').textContent =
-  //       'Your Game is Over ❌ 🚫';
-  //     document.querySelector('.Attempts').textContent = 0;
-  //   }
-  // }
 });
 
 //To reload the page, here we use the window.location.reload() method
@@ -87,7 +72,7 @@ document.querySelector('.check').addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   Attempts = 20;
   secretNum = Math.trunc(Math.random() * 20) + 1;
-  document.querySelector('.message').textContent = 'Start guessing...';
+  displayMsg('Start guessing...');
   document.querySelector('.Attempts').textContent = Attempts;
   document.querySelector('.number').textContent = '?';
   document.querySelector('.guess').value = '';
